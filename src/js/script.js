@@ -68,7 +68,7 @@ images.forEach((image, i) => {
 });
 
 slider.querySelector('.arrow-right').addEventListener('click', () => {
-  if (currentIndex === 8) currentIndex = -1;
+  if (currentIndex === images.length-1) currentIndex = -1;
   slider.querySelector('.image-container img').src = images[currentIndex + 1].src.split('-min')[0] + '.jpg';
   currentIndex++;
 
@@ -76,7 +76,7 @@ slider.querySelector('.arrow-right').addEventListener('click', () => {
 });
 
 document.querySelector('.arrow-left').addEventListener('click', () => {
-  if (currentIndex === 0) currentIndex = 9;
+  if (currentIndex === 0) currentIndex = images.length;
   slider.querySelector('.image-container img').src = images[currentIndex - 1].src.split('-min')[0] + '.jpg';
   currentIndex--;
 
@@ -98,16 +98,16 @@ document.querySelector('.arrow-left').addEventListener('click', () => {
 document.addEventListener('keydown', (e) => {
   if (slider.classList.contains('active')) {
     if (e.keyCode === 37) {
-      if (currentIndex === 0) currentIndex = 9;
-      slider.querySelector('image-container img').src = images[currentIndex - 1].src.split('-min')[0] + '.jpg';
+      if (currentIndex === 0) currentIndex = images.length;
+      slider.querySelector('.image-container img').src = images[currentIndex - 1].src.split('-min')[0] + '.jpg';
       currentIndex--;
 
       changeSliderPreviews();
     }
 
     if (e.keyCode === 39) {
-      if (currentIndex === 8) currentIndex = -1;
-      slider.querySelector('image-container img').src = images[currentIndex + 1].src.split('-min')[0] + '.jpg';
+      if (currentIndex === images.length-1) currentIndex = -1;
+      slider.querySelector('.image-container img').src = images[currentIndex + 1].src.split('-min')[0] + '.jpg';
       currentIndex++;
 
       changeSliderPreviews();
